@@ -1,8 +1,8 @@
 import { Group, Mesh, BoxBufferGeometry, MeshLambertMaterial, Vector2 } from 'three'
-import Wheel from '../Wheel'
-import { getRandomColor } from '../../../helpers'
-import CarFrontTexture from './CarFrontTexture'
-import CarSideTexture from './CarSideTexture'
+import Wheel from '../wheel'
+import { getRandomColor } from '../../../tools/helpers'
+import CarFrontTexture from './car-front-texture'
+import CarSideTexture from './car-side-texture'
 
 export default class Car extends Group {
   constructor () {
