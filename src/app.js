@@ -24,7 +24,7 @@ export default class App {
 
     this.camera.setInitialPosition()
 
-    this.scene.init()
+    this.scene.init(this.camera)
   }
 
   start () {
