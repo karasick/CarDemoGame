@@ -1,0 +1,8 @@
+#score {
+  width: 100vw;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  margin: 0px auto;
+  padding: 120px 0 0 60px;
+}

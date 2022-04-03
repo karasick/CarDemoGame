@@ -1,6 +1,6 @@
 import { Mesh, BoxBufferGeometry, MeshLambertMaterial } from 'three'
 
-export default class Wheel extends Mesh {
+export default class WheelModel extends Mesh {
   constructor () {
     const width = 12
     const height = 33

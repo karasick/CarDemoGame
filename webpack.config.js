@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Car Demo Game',
+      title: 'CarModel Demo Game',
     }),
   ],
   output: {

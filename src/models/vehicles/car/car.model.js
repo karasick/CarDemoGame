@@ -1,18 +1,18 @@
 import { Group, Mesh, BoxBufferGeometry, MeshLambertMaterial, Vector2 } from 'three'
-import Wheel from '../wheel'
+import WheelModel from '../wheel.model'
 import { getRandomColor } from '../../../tools/helpers'
 import CarFrontTexture from './car-front.texture'
 import CarSideTexture from './car-side.texture'
 
-export default class Car extends Group {
+export default class CarModel extends Group {
   constructor () {
     super()
 
-    const backWheel = new Wheel()
+    const backWheel = new WheelModel()
     backWheel.position.x = -18
     this.add(backWheel)
 
-    const frontWheel = new Wheel()
+    const frontWheel = new WheelModel()
     frontWheel.position.x = 18
     this.add(frontWheel)
 

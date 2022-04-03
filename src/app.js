@@ -1,34 +1,48 @@
 import { WebGLRenderer } from 'three'
-import CanvasFactory from './tools/canvas.factory'
 import MainCamera from './cameras/main.camera'
 import MainScene from './scenes/main.scene'
+import AnimationLoop from './game/AnimationLoop'
 
 export default class App {
   constructor () {
-    const canvasFactory = new CanvasFactory()
-    const rendererCanvas = canvasFactory.createNewCanvas()
+    const rendererCanvas = this._createNewGlobalCanvas()
 
-    this.renderer = new WebGLRenderer({
+    window.renderer = new WebGLRenderer({
       canvas: rendererCanvas,
       antialias: true
     })
 
-    this.camera = new MainCamera()
+    window.camera = new MainCamera()
 
-    this.scene = new MainScene()
+    window.currentScene = new MainScene()
   }
 
   init () {
-    this.renderer.setPixelRatio(window.devicePixelRatio)
-    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    window.renderer.setPixelRatio(window.devicePixelRatio)
+    window.renderer.setSize(window.innerWidth, window.innerHeight)
 
-    this.camera.setInitialPosition()
+    window.camera.setInitialPosition()
 
-    this.scene.init(this.camera)
+    window.currentScene.init()
   }
 
   start () {
-    this.renderer.render(this.scene, this.camera)
+    window.renderer.render(window.currentScene, window.camera)
+
+    const animationLoop = new AnimationLoop()
+    window.renderer.setAnimationLoop(timestamp => {
+      animationLoop.updateLoop(timestamp, () => window.currentScene.update())
+    })
+  }
+
+  _createNewGlobalCanvas (canvasName = 'game-canvas') {
+    const canvasTag = 'canvas'
+
+    const canvas = document.createElement(canvasTag)
+    canvas.id = canvasName
+    document.body.prepend(canvas)
+
+    return canvas
   }
 }
 

@@ -7,3 +7,7 @@ export function getRandomColor () {
 
   return color
 }
+
+export function pickRandom (array) {
+  return array[Math.floor(Math.random() * array.length)]
+}
